@@ -9,6 +9,30 @@ function agregarAmigo(){
     }
     else{
         listaAmigos.push(nombreAmigo);
+        actualizarListaAmigos();
     }
     document.getElementById('amigo').value="";
+}
+
+function actualizarListaAmigos(){
+    let lista = document.getElementById('listaAmigos');
+    lista.innerHTML='';
+    
+    for(let i=0; i<listaAmigos.length; i++){
+        let amigo=listaAmigos[i];
+        let elementoLista=document.createElement('li');
+        elementoLista.textContent=amigo;
+        lista.appendChild(elementoLista);
+    }
+}
+
+function sortearAmigo(){
+    if(listaAmigos.length==0){
+        alert('No hay amigos para sortear');
+    }
+    else{
+        let indice = Math.floor(Math.random()*listaAmigos.length);
+        let resultado = document.getElementById('resultado');
+        resultado.innerHTML=listaAmigos[indice];
+    }
 }
